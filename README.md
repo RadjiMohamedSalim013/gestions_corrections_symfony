@@ -1,4 +1,4 @@
-# Gestion des Examens  - Application Symfony
+# Gestion des corrections - Application Symfony
 
 Une application web complète pour la gestion des examens scolaires, développée avec Symfony . Cette plateforme permet de gérer les établissements, les professeurs, les épreuves, les examens et les corrections de manière centralisée.
 
