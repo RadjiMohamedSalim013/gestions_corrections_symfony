@@ -1,18 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Professeur index{% endblock %}
+{% block title %}Liste des professeurs{% endblock %}
 
 {% block body %}
-    <h1>Professeur index</h1>
+<div class="container mt-4">
+    <h1 class="mb-4 text-primary fw-bold">Liste des professeurs</h1>
 
-    <table class="table">
-        <thead>
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+        <a href="{{ path('app_professeur_new') }}" class="btn btn-success">
+            <i class="fas fa-plus"></i> Créer un nouveau professeur
+        </a>
+    </div>
+
+    <table class="table table-hover table-striped align-middle">
+        <thead class="table-light">
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Grade</th>
-                <th>actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Grade</th>
+                <th scope="col" style="width: 150px;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +30,20 @@
                 <td>{{ professeur.prenom }}</td>
                 <td>{{ professeur.grade }}</td>
                 <td>
-                    <a href="{{ path('app_professeur_show', {'id': professeur.id}) }}">show</a>
-                    <a href="{{ path('app_professeur_edit', {'id': professeur.id}) }}">edit</a>
+                    <a href="{{ path('app_professeur_show', {'id': professeur.id}) }}" class="btn btn-sm btn-outline-info me-1" title="Voir">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="{{ path('app_professeur_edit', {'id': professeur.id}) }}" class="btn btn-sm btn-outline-warning" title="Modifier">
+                        <i class="fas fa-edit"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5" class="text-center text-muted">Aucun professeur trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_professeur_new') }}">Create new</a>
+</div>
 {% endblock %}

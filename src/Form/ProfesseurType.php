@@ -19,7 +19,9 @@ class ProfesseurType extends AbstractType
             ->add('grade')
             ->add('etablissement', EntityType::class, [
                 'class' => Etablissement::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
+                'placeholder' => 'Sélectionnez un établissement',
+
             ])
         ;
     }

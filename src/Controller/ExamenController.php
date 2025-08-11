@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+# affichage de la liste des examens
 #[Route('/examen')]
 final class ExamenController extends AbstractController
 {
@@ -22,6 +23,7 @@ final class ExamenController extends AbstractController
         ]);
     }
 
+    # ajout d'un nouvel examen
     #[Route('/new', name: 'app_examen_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -42,6 +44,7 @@ final class ExamenController extends AbstractController
         ]);
     }
 
+    # affichage d'un examen
     #[Route('/{id}', name: 'app_examen_show', methods: ['GET'])]
     public function show(Examen $examan): Response
     {
@@ -50,6 +53,7 @@ final class ExamenController extends AbstractController
         ]);
     }
 
+    # modification d'un examen
     #[Route('/{id}/edit', name: 'app_examen_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Examen $examan, EntityManagerInterface $entityManager): Response
     {
@@ -68,6 +72,7 @@ final class ExamenController extends AbstractController
         ]);
     }
 
+    # suppression d'un examen
     #[Route('/{id}', name: 'app_examen_delete', methods: ['POST'])]
     public function delete(Request $request, Examen $examan, EntityManagerInterface $entityManager): Response
     {

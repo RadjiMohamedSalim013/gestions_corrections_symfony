@@ -1,17 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Etablissement index{% endblock %}
+{% block title %}Liste des établissements{% endblock %}
 
 {% block body %}
-    <h1>Etablissement index</h1>
+<div class="container mt-4">
+    <h1 class="mb-4 text-primary fw-bold">Liste des établissements</h1>
 
-    <table class="table">
-        <thead>
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+        <a href="{{ path('app_etablissement_new') }}" class="btn btn-success">
+            <i class="fas fa-plus"></i> Créer un nouvel établissement
+        </a>
+        <a href="{{ path('app_etablissement_export', {'format': 'excel'}) }}" class="btn btn-primary">
+            <i class="fas fa-file-excel"></i> Exporter en Excel
+        </a>
+    </div>
+
+    <table class="table table-hover table-striped align-middle">
+        <thead class="table-light">
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Ville</th>
-                <th>actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Ville</th>
+                <th scope="col" style="width: 150px;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,19 +29,22 @@
             <tr>
                 <td>{{ etablissement.id }}</td>
                 <td>{{ etablissement.nom }}</td>
-                <td>{{ etablissement.ville }}</td>
+                <td>{{ etablissement.ville ?: '—' }}</td>
                 <td>
-                    <a href="{{ path('app_etablissement_show', {'id': etablissement.id}) }}">show</a>
-                    <a href="{{ path('app_etablissement_edit', {'id': etablissement.id}) }}">edit</a>
+                    <a href="{{ path('app_etablissement_show', {'id': etablissement.id}) }}" class="btn btn-sm btn-outline-info me-1" title="Voir">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="{{ path('app_etablissement_edit', {'id': etablissement.id}) }}" class="btn btn-sm btn-outline-warning" title="Modifier">
+                        <i class="fas fa-edit"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4" class="text-center text-muted">Aucun établissement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_etablissement_new') }}">Create new</a>
+</div>
 {% endblock %}

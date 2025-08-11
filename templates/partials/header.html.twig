@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="{{ path('app_home') }}">
+      <i class="bi bi-building"></i> gestions-corrections
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ path('app_etablissement_index') }}"><i class="bi bi-geo-alt"></i> Établissements</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ path('app_examen_index') }}"><i class="bi bi-journal-text"></i> Examens</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ path('app_epreuve_index') }}"><i class="bi bi-pencil"></i> Épreuves</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ path('app_professeur_index') }}"><i class="bi bi-person-badge"></i> Professeurs</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ path('app_correction_index') }}"><i class="bi bi-check2-square"></i> Corrections</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

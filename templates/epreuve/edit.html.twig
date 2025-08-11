@@ -1,13 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Epreuve{% endblock %}
+{% block title %}Modifier une épreuve{% endblock %}
 
 {% block body %}
-    <h1>Edit Epreuve</h1>
+<div class="container mt-5">
+    <h1 class="mb-4 text-primary fw-bold">Modifier une épreuve</h1>
 
-    {{ include('epreuve/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="card shadow-sm border-0 p-4">
+        {{ include('epreuve/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    </div>
 
-    <a href="{{ path('app_epreuve_index') }}">back to list</a>
+    <div class="mt-3 d-flex gap-3 align-items-center">
+        <a href="{{ path('app_epreuve_index') }}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-1"></i> Retour à la liste
+        </a>
 
-    {{ include('epreuve/_delete_form.html.twig') }}
+        {{ include('epreuve/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}

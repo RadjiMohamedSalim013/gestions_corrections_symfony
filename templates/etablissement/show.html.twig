@@ -1,30 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Etablissement{% endblock %}
+{% block title %}Détail de l'établissement{% endblock %}
 
 {% block body %}
-    <h1>Etablissement</h1>
+<div class="container mt-5">
+    <h1 class="mb-4 text-primary fw-bold">Détail de l'établissement</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ etablissement.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ etablissement.nom }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ etablissement.ville }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <table class="table table-borderless mb-0">
+                <tbody>
+                    <tr>
+                        <th scope="row" style="width: 140px;">ID</th>
+                        <td>{{ etablissement.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nom</th>
+                        <td>{{ etablissement.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ville</th>
+                        <td>{{ etablissement.ville ?: '<span class="text-muted">Non renseignée</span>' | raw }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <a href="{{ path('app_etablissement_index') }}">back to list</a>
+    <div class="mt-4 d-flex gap-2">
+        <a href="{{ path('app_etablissement_index') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-1"></i> Retour à la liste
+        </a>
 
-    <a href="{{ path('app_etablissement_edit', {'id': etablissement.id}) }}">edit</a>
+        <a href="{{ path('app_etablissement_edit', {'id': etablissement.id}) }}" class="btn btn-warning">
+            <i class="fas fa-edit me-1"></i> Modifier
+        </a>
 
-    {{ include('etablissement/_delete_form.html.twig') }}
+       {# {{ include('etablissement/_delete_form.html.twig') }}#}
+    </div>
+</div>
 {% endblock %}

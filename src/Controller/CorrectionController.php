@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/correction')]
 final class CorrectionController extends AbstractController
 {
+    # affichage de la liste des corrections
     #[Route(name: 'app_correction_index', methods: ['GET'])]
     public function index(CorrectionRepository $correctionRepository): Response
     {
@@ -22,6 +23,7 @@ final class CorrectionController extends AbstractController
         ]);
     }
 
+    #ajout d'une nouvelle correction
     #[Route('/new', name: 'app_correction_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -42,6 +44,7 @@ final class CorrectionController extends AbstractController
         ]);
     }
 
+    # affichage d'une correction
     #[Route('/{id}', name: 'app_correction_show', methods: ['GET'])]
     public function show(Correction $correction): Response
     {
@@ -50,6 +53,7 @@ final class CorrectionController extends AbstractController
         ]);
     }
 
+    # modification d'une correction
     #[Route('/{id}/edit', name: 'app_correction_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Correction $correction, EntityManagerInterface $entityManager): Response
     {
@@ -68,6 +72,7 @@ final class CorrectionController extends AbstractController
         ]);
     }
 
+    # suppression d'une correction
     #[Route('/{id}', name: 'app_correction_delete', methods: ['POST'])]
     public function delete(Request $request, Correction $correction, EntityManagerInterface $entityManager): Response
     {

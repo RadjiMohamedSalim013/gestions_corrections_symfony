@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+# affichage de la liste des professeurs
 #[Route('/professeur')]
 final class ProfesseurController extends AbstractController
 {
@@ -22,6 +23,7 @@ final class ProfesseurController extends AbstractController
         ]);
     }
 
+    # ajout d'un nouveau professeur
     #[Route('/new', name: 'app_professeur_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -42,6 +44,7 @@ final class ProfesseurController extends AbstractController
         ]);
     }
 
+    # affichage d'un professeur
     #[Route('/{id}', name: 'app_professeur_show', methods: ['GET'])]
     public function show(Professeur $professeur): Response
     {
@@ -50,6 +53,7 @@ final class ProfesseurController extends AbstractController
         ]);
     }
 
+    # modification d'un professeur
     #[Route('/{id}/edit', name: 'app_professeur_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Professeur $professeur, EntityManagerInterface $entityManager): Response
     {
@@ -68,6 +72,7 @@ final class ProfesseurController extends AbstractController
         ]);
     }
 
+    # suppression d'un professeur
     #[Route('/{id}', name: 'app_professeur_delete', methods: ['POST'])]
     public function delete(Request $request, Professeur $professeur, EntityManagerInterface $entityManager): Response
     {

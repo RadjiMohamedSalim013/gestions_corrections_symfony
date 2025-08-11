@@ -1,30 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Epreuve{% endblock %}
+{% block title %}Détail de l'épreuve{% endblock %}
 
 {% block body %}
-    <h1>Epreuve</h1>
+<div class="container mt-5">
+    <h1 class="mb-4 text-primary fw-bold">Détail de l'épreuve</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ epreuve.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ epreuve.nom }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ epreuve.type }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <table class="table table-borderless mb-0">
+                <tbody>
+                    <tr>
+                        <th scope="row" style="width: 140px;">ID</th>
+                        <td>{{ epreuve.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nom</th>
+                        <td>{{ epreuve.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Type</th>
+                        <td>{{ epreuve.type ?: '<span class="text-muted">Non renseigné</span>' | raw }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <a href="{{ path('app_epreuve_index') }}">back to list</a>
+    <div class="mt-4 d-flex gap-2">
+        <a href="{{ path('app_epreuve_index') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-1"></i> Retour à la liste
+        </a>
 
-    <a href="{{ path('app_epreuve_edit', {'id': epreuve.id}) }}">edit</a>
+        <a href="{{ path('app_epreuve_edit', {'id': epreuve.id}) }}" class="btn btn-warning">
+            <i class="fas fa-edit me-1"></i> Modifier
+        </a>
 
-    {{ include('epreuve/_delete_form.html.twig') }}
+        {{ include('epreuve/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}
